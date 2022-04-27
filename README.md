@@ -2,6 +2,7 @@
 
 JavaScript Client-Side Dogecoin Signing and Verification Tool
 
+Hosted on GitHub Pages : https://dogenano-xdg.github.io/dogecoin-signature-tool/
 ## Build from source  
 Install Node.js: https://nodejs.org/en/download/
 
