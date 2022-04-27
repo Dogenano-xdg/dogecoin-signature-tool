@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "bip32": "^3.0.1",
+    "bip39": "^3.0.4",
+    "bitcoinjs-lib": "4.0.5",
+    "bitcoinjs-message": "^2.2.0"
+  }
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dogecoin Signature Tool</title>
+
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif; max-width: 600px; min-width: 200px; margin-right: auto; margin-left: auto; color: #333">
+  <style>
+    input, button{
+      width: 100%;
+      border-radius: 8px;
+      padding: 12px;
+    }
+    button{
+      border-color: gray;
+      background-color: #f5f5f5;
+    }
+    label {
+      margin: 8px;
+    }
+    .form{
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+  <div id="main" style="margin: 8px; padding-bottom: 100px;">
+
+    <h1>Dogecoin signature tool</h1>
+    <h2>Safety</h2>
+    This tool is open source and entierly executed on client side. Signing a message requires a secret phrase, it will never be sent to any server.
+    Using this tool should be safe, however here are extra safety measures you can take :
+    <ul>
+      <li> Withdraw your Dogecoin to another wallet before using it</li>
+      <li> Enable plane mode and disable your internet connection while using it</li>
+      <li> Download, verify and execute source code locally</li>
+    </ul>
+    
+    <ol>
+      
+    </ol>
+    <h2>Sign message</h2>
+    <div class="form">
+      
+      <label>12 or 24 words secret phrase (BIP39):</label>
+      <input id="words" placeholder="12 or 24 words secret"/>
+      <label>Message to sign:</label> 
+      <input id="message" placeholder="Message to sign" />
+      <label>(Advanced) Index: </label>
+      <input id="index" type="number" placeholder="Index" value="0"/>
+      <label>Dogecoin address:</label>
+      <input id="dogecoin-address" placeholder="Dogecoin address" disabled/>
+      <div style="display: flex;">
+        <button style="width: 125px; margin-top: 8px; margin-right: 4px;"  id="setExampleSign">Example</button>
+        <button style="width: 125px; margin-top: 8px; margin-right: 4px;" id="resetSign" >Reset</button>
+        <button style="width: 125px; margin-top: 8px; margin-right: 4px;" id="sign">Sign</button>
+      </div>
+    <label>Signature result:</label>
+    <textarea style="margin-top: 8px;" id="signature-result" placeholder="Signature result" ></textarea>
+    <button style="width: 125px; margin-top: 8px; margin-right: 4px;" id="copy">Copy signature</button>
+  </div>
+  <h2>Verify message</h2>
+  <div class="form">
+    <label>Message Dogecoin address:</label>
+    <input id="message-dogecoin-address" placeholder="Dogecoin address"/>
+    <label>Message to verify:</label> 
+    <input id="message-to-verify" placeholder="Message to verify" />
+    <label>Message signature:</label> 
+    <input id="message-signature" placeholder="Message Signature" />
+    <div style="display: flex;">
+      <button style="width: 125px; margin-top: 8px; margin-right: 4px;"  id="setExampleVerify">Example</button>
+      <button style="width: 125px; margin-top: 8px; margin-right: 4px;" id="resetVerify" >Reset</button>
+      <button style="width: 125px; margin-top: 8px; margin-right: 4px;" id="verify">Verify</button>
+    </div>
+    <div style="margin-top: 8px;" id="signature-isvalid"></div>
+    <div id="signature-error"></div>
+  </div>
+</div>
+<script src="bundle.js"></script>
+
+</body>
+</html>
