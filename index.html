@@ -39,12 +39,36 @@
     <h2>Sign message</h2>
     <div class="form">
       
-      <label>12 or 24 words secret phrase (BIP39):</label>
-      <input id="words" placeholder="12 or 24 words secret"/>
+      <label>Key Format</label>
+      <div style="display: flex; align-items: center; margin-bottom: 16px;">
+        <div>
+          <label for="format-bip39">BIP39</label>
+          <input type="radio" name="format" value="bip39" checked id="format-bip39" style="width: 30px;">
+        </div>
+        <div>
+          <label for="format-privkey">WIF</label>
+          <input type="radio" name="format" value="privkey" id="format-privkey" style="width: 30px;">
+        </div>
+      </div>
+    
+      <div id="bip39-words">
+        <div>
+          <label>12 or 24 words secret phrase (BIP39):</label>
+          <input id="words" placeholder="12 or 24 words secret"/>
+        </div>
+        <div style="margin-top: 8px;">
+          <label>(Advanced) Index: </label>
+          <input id="index" type="number" placeholder="Index" value="0"/>
+        </div>
+      </div>
+      
+      <div id="privkey-key" style="display: none;">
+        <label>Private key:</label>
+        <input id="wif" placeholder="Private key (WIF)"/>
+      </div>
+
       <label>Message to sign:</label> 
       <input id="message" placeholder="Message to sign" />
-      <label>(Advanced) Index: </label>
-      <input id="index" type="number" placeholder="Index" value="0"/>
       <label>Dogecoin address:</label>
       <input id="dogecoin-address" placeholder="Dogecoin address" disabled/>
       <div style="display: flex;">
