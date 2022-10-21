@@ -65,13 +65,14 @@ function updateAddress(){
 }
 
 function signMessageFromPrivkey(privkey, message){
+  let compressed = privkey.length === 52
   let keyPair = bitcoin.ECPair.fromWIF(privkey, DOGE_NETWORK)
   let privateKey = keyPair.privateKey
-  let signature = bitcoinMessage.sign(message, privateKey, true, "\x19Dogecoin Signed Message:\n")
+  let signature = bitcoinMessage.sign(message, privateKey, compressed, "\x19Dogecoin Signed Message:\n")
 
   return {
     signature: signature.toString('base64'),
-    address: getDogecoinAddress(keyPair.publicKey)
+    address: getDogecoinAddress(keyPair.publicKey, compressed)
   }
 }
 
@@ -130,10 +131,10 @@ function verify(){
 
 
 
-function getDogecoinAddress(publicKey){
-  const compressed = bitcoin.ECPair.fromPublicKey(publicKey, { compressed: true }).publicKey
+function getDogecoinAddress(publicKey, compressed = true){
+  const pubkey = bitcoin.ECPair.fromPublicKey(publicKey, { compressed: compressed }).publicKey
   let { address: dogeCoinAddress } = bitcoin.payments.p2pkh({
-    pubkey: compressed,
+    pubkey: pubkey,
     network: DOGE_NETWORK,
   });
   return dogeCoinAddress
