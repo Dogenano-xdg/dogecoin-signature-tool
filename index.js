@@ -131,8 +131,9 @@ function verify(){
 
 
 function getDogecoinAddress(publicKey){
+  const compressed = bitcoin.ECPair.fromPublicKey(publicKey, { compressed: true }).publicKey
   let { address: dogeCoinAddress } = bitcoin.payments.p2pkh({
-    pubkey: publicKey,
+    pubkey: compressed,
     network: DOGE_NETWORK,
   });
   return dogeCoinAddress
